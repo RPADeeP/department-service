@@ -1,9 +1,9 @@
 package deep.department.controller
 
-import deep.department.component.dto.AddUserToDepartmentDTO
-import deep.department.component.dto.DepartmentCreateDTO
+import deep.department.dto.AddUserToDepartmentDTO
+import deep.department.dto.DepartmentCreateDTO
 import deep.department.model.Department
-import deep.department.services.DepartmentService
+import deep.department.service.DepartmentService
 import org.springframework.security.access.annotation.Secured
 import org.springframework.web.bind.annotation.*
 

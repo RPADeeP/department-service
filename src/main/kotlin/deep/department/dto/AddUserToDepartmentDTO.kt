@@ -1,4 +1,4 @@
-package deep.department.component.dto
+package deep.department.dto
 
 import deep.department.model.User
 

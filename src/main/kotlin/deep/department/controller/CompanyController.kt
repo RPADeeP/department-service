@@ -1,7 +1,7 @@
 package deep.department.controller
 
-import deep.department.component.dto.CompanyCreateDTO
-import deep.department.services.CompanyService
+import deep.department.dto.CompanyCreateDTO
+import deep.department.service.CompanyService
 import org.springframework.security.access.annotation.Secured
 import org.springframework.web.bind.annotation.*
 

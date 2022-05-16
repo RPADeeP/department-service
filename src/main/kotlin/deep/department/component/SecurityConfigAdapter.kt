@@ -17,6 +17,7 @@ class SecurityConfigAdapter (
         ) : WebSecurityConfigurerAdapter(){
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
+        http.cors()
 
         http
             .sessionManagement()
@@ -34,7 +35,6 @@ class SecurityConfigAdapter (
 
         http
             .authorizeRequests()
-            .antMatchers("/auth/**").permitAll()
             .anyRequest()
             .authenticated()
 

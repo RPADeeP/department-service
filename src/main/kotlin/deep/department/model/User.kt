@@ -1,17 +1,13 @@
 package deep.department.model
 
 import org.bson.types.ObjectId
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
 
-@Document(collection = "USER")
-open class User (
+class User (
+    var id: ObjectId,
     var firstName: String,
     var lastName: String,
     var middleName: String,
+    var code: String,
+    var role: Role,
     var companyToken: String? = ""
-) {
-    @Id
-    var id: ObjectId = ObjectId.get()
-    lateinit var code: String
-}
+)

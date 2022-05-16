@@ -1,8 +1,8 @@
-package deep.department.services
+package deep.department.service
 
-import deep.department.component.dto.AddUserToDepartmentDTO
+import deep.department.dto.AddUserToDepartmentDTO
 import deep.department.repository.DepartmentRepository
-import deep.department.component.dto.DepartmentCreateDTO
+import deep.department.dto.DepartmentCreateDTO
 import deep.department.model.Department
 import deep.department.model.exception.AlreadyHasNameException
 import org.springframework.stereotype.Service
@@ -15,7 +15,7 @@ interface DepartmentService {
 
 @Service
 class DepartmentServiceImpl(
-    val departmentRepository: DepartmentRepository,
+    private val departmentRepository: DepartmentRepository,
 ) : DepartmentService {
     override fun createDepartment(departmentCreateDTO: DepartmentCreateDTO) {
         if(departmentRepository.findByNameAndCompanyToken(departmentCreateDTO.name, departmentCreateDTO.companyToken) != null) {
@@ -24,8 +24,7 @@ class DepartmentServiceImpl(
 
         val dep = Department(
             departmentCreateDTO.name,
-            listOf(),
-            departmentCreateDTO.role,
+            departmentCreateDTO.users,
             departmentCreateDTO.companyToken
         )
         departmentRepository.save(dep)

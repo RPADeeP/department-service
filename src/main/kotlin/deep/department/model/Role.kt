@@ -1,18 +1,13 @@
 package deep.department.model
 
 import org.bson.types.ObjectId
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
 
-@Document(collection = "ROLE")
-class Role (
+class Role(
+    var id: ObjectId,
     var name: String,
     var isGeneralStatisticAvailable: Boolean,
     var isProcessCreatorAvailable: Boolean,
     var isJiraAvailable: Boolean,
     var isAddingStaffAvailable: Boolean,
-    var companyToken: String
-        ) {
-    @Id
-    var id: ObjectId = ObjectId.get()
-}
+    var companyToken: String = ""
+)
