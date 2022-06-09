@@ -14,6 +14,6 @@ class CompanyController(
 
     @PostMapping(path=["/create"])
     fun create(@RequestBody companyCreateDTO: CompanyCreateDTO) : String {
-        return companyService.createCompany(companyCreateDTO).toString()
+        return companyService.createCompany(companyCreateDTO)
     }
 }

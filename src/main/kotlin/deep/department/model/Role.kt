@@ -1,9 +1,8 @@
 package deep.department.model
 
-import org.bson.types.ObjectId
 
 class Role(
-    var id: ObjectId,
+    var id: String,
     var name: String,
     var isGeneralStatisticAvailable: Boolean,
     var isProcessCreatorAvailable: Boolean,

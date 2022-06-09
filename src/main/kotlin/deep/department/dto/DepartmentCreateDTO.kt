@@ -4,6 +4,6 @@ import deep.department.model.User
 
 class DepartmentCreateDTO(
     var name: String,
-    var users: List<User> = listOf(),
+    var users: ArrayList<User> = ArrayList(),
     var companyToken: String
 )

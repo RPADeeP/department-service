@@ -1,7 +1,6 @@
 package deep.department.component
 
 import org.apache.commons.lang.StringUtils
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
@@ -18,11 +17,9 @@ import javax.servlet.http.HttpServletResponse
 
 @Component
 class JwtTokenFilter(
-    val restTemplate: RestTemplate
+    val restTemplate: RestTemplate,
+    private val authenticationBaseUrl: String
 ) : OncePerRequestFilter() {
-
-    @Value("\${app.security.token-authentication.url}")
-    private lateinit var tokenAuthenticationUrl: String
 
     override fun doFilterInternal(
         request: HttpServletRequest,
@@ -39,7 +36,7 @@ class JwtTokenFilter(
         headers.set("Authorization", "Bearer " + header.split(" ".toRegex()).toTypedArray()[1].trim { it <= ' ' });
         val requestEntity: HttpEntity<Void> = HttpEntity(headers)
 
-        val authDetails = restTemplate.exchange("$tokenAuthenticationUrl/token/authenticate", HttpMethod.GET, requestEntity, String::class.java)
+        val authDetails = restTemplate.exchange("$authenticationBaseUrl/token/authenticate", HttpMethod.GET, requestEntity, String::class.java)
 
         if(authDetails.body!!.isEmpty()) {
             filterChain.doFilter(request, response)

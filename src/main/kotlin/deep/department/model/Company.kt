@@ -10,5 +10,5 @@ data class Company (
     var departments:  List<Department>,
         ) {
     @Id
-    var id: ObjectId = ObjectId.get()
+    var id: String = ObjectId.get().toString()
 }
